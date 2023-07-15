@@ -186,6 +186,8 @@ if __name__ == "__main__":
     start_time = time.time()
     
     for page in range(args.startPage,args.endPage+1):
+        if page == 1:
+            continue
         url = urlGen(args.themeID, page)
         try:
             print("theme_ID:%d page:%d started:"%(args.themeID,page))

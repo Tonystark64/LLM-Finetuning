@@ -1,7 +1,7 @@
 themeID=675
-startPage=2
+startPage=2 # should be greater than 1
 endPage=101
-# dir path not file path
+# dir path not file name
 output_path='/home/ryanzhang/crawler'
 python  crawler.py \
     	      --themeID ${themeID} \
