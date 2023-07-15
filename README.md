@@ -1,6 +1,8 @@
 ## Introduction  
 >1. The scripts are modified from [BELLE](https://github.com/LianjiaTech/BELLE) project v2  
->2. We modified some scripts to cater to our training purposes:  
+>2. We modified some scripts to cater to our training purposes:
+## Data Collection  
+>1. The scripts inside [**crawler**](./crawler) folder are to collect posts from a forum website.   
 ## Preprocess  
 >1. The *convert_to_conv_data.py* is to convert our customized JSON files so that they align with BELLE model.   
 >2. For context-based question answering, we need to combine context and question into the new question field.    
