@@ -1,0 +1,64 @@
+https://cuiqingcai.com/202241.html
+https://cuiqingcai.com/202261.html
+
+https://www.baby-kingdom.com/forum.php?mod=forumdisplay&fid=40&page=2
+
+
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[10]/div[1]/div/div[1]/div[2]/div[1] 循环节
+
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[3]/div[2]/a[3] 类型
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[3]/div[2]/a[4]/span[1] title
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[6]/div[1]  URL
+/div[3]/div[1]/div[1]/span[1]  main_post+
+/div[2]/div[1]/div[2]/em[1]/span[1]  main_time+
+/div[2]/div[1]/div[1]/div[1]/span[1]  reply_post+
+/div[1]/div[1]/div[2]/em[1]/span[1]   reply_time+
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[10]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]    view
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[10]/div[1]/div[1]/div[1]/div[1]/div[1]/span[3]   reply
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[10]/div[1]/div[4]/div[1]/div[2]/div[2]/div[1]/a[1]/span[1]/span[1]  share
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[10]/div[1]/div[4]/div[1]/div[2]/div[2]/div[1]/a[2]/span[1]/span[1] support
+/html/body/div[12]/div[1]/div[2]/div[2]/div[2]/div[10]/div[1]/div[4]/div[1]/div[2]/div[2]/div[1]/a[3]/span[1]/span[1] oppose 
+
+主贴 <div class="t_fsz"> <span id="postmessage_..">
+
+---------------------------------------------------------
+
+XPATH 学习
+在XML文档中查找信息, 在XML中对元素和属性遍历
+七种类型节点: 元素,属性,文本,命名空间,处理指令,注释,文档节点(根节点)
+节点树 
+<author>J K. Rowling</author> 为元素节点
+lang="en" 为属性节点
+J K. Rowling或"en"是基本值,或原子值
+元素以及属性都有一个父
+Parent, Children, Sibling
+Ancestor: 父,父的父...
+Descendant...
+路径表达式在XML文档中选节点, 沿着路径或step选取
+nodename	选取此节点所有子节点
+/           从根节点选取
+// 			从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置
+.			选当前节点
+..			选当前节点的父节点
+@			选属性
+/bookstore	选根元素bookstore
+bookstore/book   选属于bookstore的子元素的所有book元素
+//book 		选所有book子元素
+bookstore//book  选属于bookstore元素后的所有Book元素
+//@lang		选名为lang的所有属性
+predicates 谓语被嵌在[]中,查找某个特定节点或包含某指定值的节点
+/bookstore/book[1] 第一个元素
+/bookstore/book[last()]
+/bookstore/book[position()<3]  最前面两个
+//title[@lang] 所有拥有名为lang的属性的title元素
+//title[@lang='eng']  title元素拥有值为eng的lang属性
+/bookstore/book[price>35.00]/title
+* 匹配任何元素
+@* 匹配任何属性节点
+node() 匹配任何类型的节点
+//book/title | //book/price  选取book元素的所有title和price元素
+child::text() 选取当前节点的所有文本子节点
+child::node() 选取当前节点的所有子节点
+
+
+
