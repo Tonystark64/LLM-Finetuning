@@ -2,7 +2,12 @@
 >1. The scripts are modified from [BELLE](https://github.com/LianjiaTech/BELLE) project v2  
 >2. We modified some scripts to cater to our training purposes:
 ## Data Collection  
->1. The scripts inside [**crawler**](./crawler) folder are to collect posts from a forum website.   
+The scripts inside [**crawler**](./crawler) folder are to collect posts from a forum website.   
+#### Features  
+>1. The captured data (post) is written to local storage at each iteration, so data is stored even when the process is interruptted.
+>2. Regular Expression is used to clean the data.
+>3. Exception handling and retry mechanism are used to improve robustness.
+>4. Xpath and selector are being used to locate interested areas.  
 ## Preprocess  
 >1. The *convert_to_conv_data.py* is to convert our customized JSON files so that they align with BELLE model.   
 >2. For context-based question answering, we need to combine context and question into the new question field.    
