@@ -7,7 +7,9 @@
 >5. Set the folder path (not file name) where you want to save the results   
 ### Suggestion
 >1. It is suggested to create tmux session to run the code, in case you need to terminate them   
->2. You may concurrently run two sessions using the same IP to increase the efficiency   
+>2. You may concurrently run two sessions using the same IP to increase the efficiency
+>3. For websites requiring scrolling down and loading, it is better to use [easy spider](https://github.com/Tonystark64/EasySpider)
+>4. Easy Spider is based on Selenium. For websites with relatively fixed structure and only text data is required, Scrappy or BS are more effective   
 ### Feature
 >1. The result file will be updated every topic. So an exception would not cause a complete data loss
 >2. If you want to know the entry number and time cost of each task, check result.csv
