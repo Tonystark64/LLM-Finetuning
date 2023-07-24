@@ -1,0 +1,14 @@
+﻿base,dataset,accelerate,GPU0,GPU1,Time(s),Inference_JSON
+bloom-1b1,HC3,deepspeed-FT,22G,19G,1523,Y
+bloom-1b1,HC3,LoRA,13G,10G,1788,Y
+bloom-560m,math,LoRA,14G,14G,43*3600,Y
+bloom-560m,dolly,LoRA,NA,NA,NA,Y
+bloom-560m,dolly,deepspeed-FT,10G,11G,NA,Y
+bloom-1b1,math15k,LoRA,16G,12G,2522,Y
+bloom-1b1,math15k,deepspeed-FT,22G,19G,2000,Y
+bloom-560m,math15k,LoRA,15G,11G,2162,Y
+bloom-560m,math15k,deepspeed-FT,12G,10G,1521,Y
+bloom-1b1,dolly,LoRA,14G,7G,4040,Y
+bloom-1b1,dolly,deepspeed-FT,22G,19G,2316,Y
+bloom-560m,HC3,deepspeed-FT,12G,10G,1175,Y
+bloom-560m,HC3,LoRA,12G,9G,2133,Y
