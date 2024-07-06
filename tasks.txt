@@ -1,0 +1,84 @@
+目标是对比不同数据集在base model上的效果提升, 
+	以及数据集叠加后,模型在eval set的效果
+https://github.com/LianjiaTech/BELLE/tree/main/train/dschat_train_v1
+https://github.com/LianjiaTech/BELLE/tree/main/train
+查一下LLM模型评估的方法（参考weopenml/pandaLM）星数量不够，找几千的
+找英联邦的标注数据集
+自学hugging face, deepspeed
+学习爬虫库
+找一下帝国理工的法律判别论文
+
+https://github.com/EleutherAI/lm-evaluation-harness
+https://github.com/stanford-crfm/helm
+https://github.com/lm-sys/FastChat/tree/main/fastchat/eval
+
+ryanzhang/S0524
+nv06.vabot.org
+conda create -n belle
+conda activate belle
+conda deactivate 
+模型地址/home/calvinzhang/huggingface_models 用bloom-560M 或 bloom-1b1
+数据地址
+/home/calvinzhang/huggingface_models/bloom-560m
+/home/calvinzhang/huggingface_models/bloom-1b1
+
+14:33 开始用bloom-560m跑HC3 all的数据, 约13k条(1k作测试,12k训练), LoRA
+
+1. --nproc_per_node 2 GPU数量设置为2
+2. run.sh路径设置为决定路径
+3. FT和LoRA不要一起跑
+4. TypeError: TextEncodeInput must be Union[TextInputSequence, Tuple[InputSequence, InputSequence]]
+   TypeError: NoneType in a list 要删除list内的NoneType元素, 去除空值数据
+5. 新版requirements.txt
+6. RuntimeError: probability tensor contains either `inf`, `nan` or element < 0
+	load_type = torch.float32
+7. ImportError: dynamic module does not define module export function (PyInit_aggregations)
+   aggregations.cpython-310-x86_64-linux-gnu.so
+   重装python对应的包, pip install 另一个版本，再装原版本
+8. json.load()：是从文件中加载内容并转换成json
+   json.loads()：是将字符串转换成json
+9. ImportError: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found 
+   (required by /home/ryanzhang/anaconda3/lib/python3.10/site-packages/matplotlib/_path.cpython-310-x86_64-linux-gnu.so)
+   回退保持的python library 如 pip install matplotlib==3.6.0
+10. TypeError: PeftModelForCausalLM.generate() takes 1 positional argument but 2 were given
+	强制LoRA合并权重
+11. Batch Size 太大(16) 可能会导致out of memory error, 降低batch size 
+12. 改变Batch Size后learning rate也要改变
+
+格式: {问题, 人工回答, chatgpt回答}
+部分问题基于上下文但数据缺失, 导致chatgpt无法理解问题, 从人工回答获悉部分上下文信息
+["我无法","我不确定","sorry","我不知道","我不能"]
+清除部分数据后, HC3剩余约11k
+
+baichuan: 7b参数, 1.2万亿个token
+------------------------------------------
+1. 使用try... except...时要print出exception, 不要忘了as e否则很难debug
+try:
+	# do something
+except Exception as e:
+	print(e)
+2. 爬虫request.get(headers)一般headers={'User-Agent':'...'}
+	修饰一个user-agent基本ok, 最多random.choice(my_user_agent)
+	headers除User-Agent其他参数先不用试验, 也不用先试proxies
+	先增加request.get的时间间隔再试headers其他参数或代理proxiesIP
+3. 在main函数或函数外自动为全局变量，无需global
+	但在一般函数内需要定义global global_var后
+	一般函数才识别为全局变量，否则默认local variable
+	main函数和函数外无需global关键字
+4. html直接抓回的text一般不能直接在变量上修改, 先赋值给其他变量再修改
+5. 部分字符串如.replace函数需要赋值才实现修改，函数本身不对变量修改(C++的普通传参vs地址传参)
+>>> d='威大嬸hk12_HK 發表於 23-7-12 16:22 没有问题'
+>>> re.sub(r'^[\s\w]+發表於[\s0-9\:\-]+','',d)
+\w可用于匹配简繁体字
+'没有问题'
+6. 
+if os.path.exists(path1):
+    df1.to_csv(path1,mode='a',index=False,header=False)
+else:
+    df1.to_csv(path1,index=False)
+7.
+pd.DataFrame(dict)
+8. 继续研究下正则匹配
+https://www.baby-kingdom.com/forum.php?mod=viewthread&tid=19125393&extra=page%3D1
+------------------------------------------
+银行和保险业的Q&A
